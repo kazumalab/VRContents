@@ -1,3 +1,12 @@
+- content_for :header do
+  %title VR開発者がなにを作っているか一目でわかる一覧ページ
+  %meta{:content => "VR開発者がなにを作っているか一目でわかる一覧ページ", :name => "description"}/
+  %meta{:content => "", :name => "keywords"}/
+  %meta{:content => "", :name => "author"}/
+  %meta{:content => "", :property => "og:title"}/
+  %meta{:content => "article", :property => "og:type"}/
+  %meta{:content => "https://vrcontentsbydeveloper.herokuapp.com", :property => "og:url"}/
+  %meta{:content => "https://vrcontentsbydeveloper.herokuapp.com", :property => "og:site_name"}/
 
 %table
   %thead
@@ -6,8 +15,6 @@
       %th 説明
       %th 連絡先電話番号
       %th 連絡先メール
-      %th 画像
-      %th
       %th
       %th
 
@@ -16,10 +23,9 @@
       - @contents.each do |content|
         %tr
           %td= content.title
-          %td= content.description
+          %td= ContentsHelper.unmarkdown(content.description)
           %td= content.telephone
           %td= content.email
-          %td= content.image
           %td= link_to 'Show', content
           %td= link_to 'Edit', edit_content_path(content)
     - else

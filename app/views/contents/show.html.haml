@@ -1,20 +1,11 @@
 %p#notice= notice
 
-%p
-  %b Title:
-  = @content.title
-%p
-  %b Description:
-  = @content.description
-%p
-  %b Telephone:
-  = @content.telephone
-%p
-  %b Email:
-  = @content.email
-%p
-  %b Image:
-  = @content.image
+.responsive-blog-post
+  .individual-post
+    %h4= @content.title
+    %p.date= @content.created_at.strftime("%Y年 %m月 %d日")
+    %img{:src => "#{@content.image}"}/
+    %p= ContentsHelper.markdown(@content.description).html_safe
 
 = link_to 'Edit', edit_content_path(@content)
 \|

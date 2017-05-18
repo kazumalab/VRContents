@@ -3,12 +3,10 @@
 %table
   %thead
     %tr
-      %th Title
-      %th Description
-      %th Telephone
-      %th Email
-      %th Image
-      %th
+      %th タイトル
+      %th 詳細
+      %th 連絡先電話番号
+      %th 連絡先メール
       %th
       %th
   %tbody
@@ -16,10 +14,9 @@
       - @contents.each do |content|
         %tr
           %td= content.title
-          %td= content.description
+          %td= ContentsHelper.unmarkdown(content.description)
           %td= content.telephone
           %td= content.email
-          %td= content.image
           %td= link_to 'Show', content
           %td= link_to 'Edit', edit_content_path(content)
     - else

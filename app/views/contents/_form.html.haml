@@ -16,8 +16,8 @@
     = f.label "開発者名"
     = f.text_field :developer_name
   .field
-    = f.label "詳細説明"
-    = f.text_area :description
+    = f.label "詳細（Markdown可）"
+    %textarea{name: "content[description]", style: "height: 10em;"}= @content.description
   .field
     = f.label "連絡先電話番号"
     = f.text_field :telephone
