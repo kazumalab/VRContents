@@ -9,6 +9,19 @@
     %link{:rel=> 'stylesheet', :href => '/assets/css/foundation.css'}
     %link{:rel=>"stylesheet", :href =>"http://fonts.googleapis.com/icon?family=Material+Icons"}
   %body
+    .top-bar
+      .top-bar-left
+        %ul.dropdown.menu{"data-dropdown-menu" => ""}
+          %li.menu-text VR開発者がなに作ってる？リスト
+          %li
+            %a{:href => "#"} トップ
+      .top-bar-right
+        %form{action: "/contents/search", "accept-charset" => "UTF-8",  method: "get"}
+          %ul.menu
+            %li
+              %input{:placeholder => "キーワード", :type => "search", name: "key"}/
+            %li
+              %button.button{:type => "submit"} Search
     = yield
 
     %script{:src => "/assets/js/jquery.js"}

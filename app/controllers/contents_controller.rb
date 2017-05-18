@@ -7,6 +7,12 @@ class ContentsController < ApplicationController
     @contents = Content.all
   end
 
+  def search
+    key = params[:key]
+    @contents = Content.where("(description LIKE ?) or (title LIKE ?)", "%#{key}%", "%#{key}%")
+    render action: 'index'
+  end
+
   # GET /contents/1
   # GET /contents/1.json
   def show

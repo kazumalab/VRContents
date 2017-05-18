@@ -1,4 +1,4 @@
-%h1 Listing contents
+%h1= "Search for " + params[:key] if params[:key].present?
 
 %table
   %thead
@@ -11,19 +11,20 @@
       %th
       %th
       %th
-
   %tbody
-    - @contents.each do |content|
+    - if @contents.count > 0
+      - @contents.each do |content|
+        %tr
+          %td= content.title
+          %td= content.description
+          %td= content.telephone
+          %td= content.email
+          %td= content.image
+          %td= link_to 'Show', content
+          %td= link_to 'Edit', edit_content_path(content)
+    - else
       %tr
-        %td= content.title
-        %td= content.description
-        %td= content.telephone
-        %td= content.email
-        %td= content.image
-        %td= link_to 'Show', content
-        %td= link_to 'Edit', edit_content_path(content)
-        %td= link_to 'Destroy', content, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+        %td No Contents 
 %br
 
 = link_to 'New Content', new_content_path
