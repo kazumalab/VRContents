@@ -1,28 +1,23 @@
-= form_for @content do |f|
-  - if @content.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@content.errors.count, "error")} prohibited this content from being saved:"
-      %ul
-        - @content.errors.full_messages.each do |msg|
-          %li= msg
-
+%form#new_content.new_content{"accept-charset" => "UTF-8", :action => "/contents", :enctype => "multipart/form-data", :method => "post"}
+  %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+  %input{:name => "authenticity_token", :type => "hidden", :value => "#{form_authenticity_token}"}/
   .field
-    = f.label "タイトル"
-    = f.text_field :title
+    %label{:for => "content_タイトル"} タイトル
+    %input#content_title{:name => "content[title]", :type => "text"}/
   .field
-    = f.label "キャプチャ画像"
-    = f.file_field :image
+    %label{:for => "content_キャプチャ画像"} キャプチャ画像
+    %input#content_image{:name => "content[image]", :type => "file"}/
   .field
-    = f.label "開発者名"
-    = f.text_field :developer_name
+    %label{:for => "content_開発者名"} 開発者名
+    %input#content_developer_name{:name => "content[developer_name]", :type => "text"}/
   .field
-    = f.label "詳細（Markdown可）"
-    %textarea{name: "content[description]", style: "height: 10em;"}= @content.description
+    %label{:for => "content_詳細（Markdown可）"} 詳細（markdown可）
+    %textarea{:name => "content[description]", :style => "height: 10em;"}
   .field
-    = f.label "連絡先メールアドレス"
-    = f.text_field :email 
+    %label{:for => "content_連絡先メールアドレス"} 連絡先メールアドレス
+    %input#content_email{:name => "content[email]", :type => "text"}/
   .field
-    = f.label "プラットフォーム(複数の場合カンマで区切る)"
-    = f.text_field :platform 
+    %label{:for => "content_プラットフォーム(複数の場合カンマで区切る)"} プラットフォーム(複数の場合カンマで区切る)
+    %input#content_platform{:name => "content[platform]", :type => "text"}/
   .actions
-    = f.submit 'Save'
+    %input{"data-disable-with" => "Save", :name => "commit", :type => "submit", :value => "Save"}/
