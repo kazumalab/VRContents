@@ -1,0 +1,28 @@
+%h1 VR開発者がなに作ってる？リスト
+
+%table
+  %thead
+    %tr
+      %th タイトル
+      %th 説明
+      %th 連絡先電話番号
+      %th 連絡先メール
+      %th 画像
+      %th
+      %th
+      %th
+
+  %tbody
+    - @contents.each do |content|
+      %tr
+        %td= content.title
+        %td= content.description
+        %td= content.telephone
+        %td= content.email
+        %td= content.image
+        %td= link_to 'Show', content
+        %td= link_to 'Edit', edit_content_path(content)
+
+%br
+
+= link_to '新規追加', new_content_path
