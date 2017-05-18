@@ -14,8 +14,8 @@
   %thead
     %tr
       %th タイトル
-      %th 詳細
-      %th 連絡先電話番号
+      %th 開発者
+      %th プラットフォーム
       %th 連絡先メール
       %th
       %th
@@ -25,7 +25,7 @@
         %tr
           %td= content.title
           %td= content.developer_name
-          %td= content.telephone
+          %td= content.platform
           %td= content.email
           %td= link_to 'Show', content
           %td= link_to 'Edit', edit_content_path(content)
