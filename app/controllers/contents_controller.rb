@@ -32,6 +32,10 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
 
+    if @content.title.blank? or @content.developer_name.blank?
+      redirect_to "/contents/new"
+      return
+    end
     respond_to do |format|
       if @content.save
         format.html { redirect_to @content, notice: 'Content was successfully created.' }
