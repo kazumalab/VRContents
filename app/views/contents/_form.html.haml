@@ -19,10 +19,11 @@
     = f.label "詳細（Markdown可）"
     %textarea{name: "content[description]", style: "height: 10em;"}= @content.description
   .field
-    = f.label "連絡先電話番号"
-    = f.text_field :telephone
-  .field
     = f.label "連絡先メールアドレス"
     = f.text_field :email 
+
+  %h3 プラットフォーム(複数の場合カンマで区切る)
+  .field
+    = f.text_field :platform 
   .actions
     = f.submit 'Save'

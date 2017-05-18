@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def self.markdown(text)
+  def markdown(text)
     options = {
         autolink: true,
         space_after_headers: true,
@@ -16,7 +16,7 @@ module ApplicationHelper
     markdown.render(text)
   end
 
-  def self.unmarkdown(text)
+  def unmarkdown(text)
     text.delete("#()[]").truncate(60)
   end
 end

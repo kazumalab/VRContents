@@ -4,8 +4,9 @@
   %thead
     %tr
       %th タイトル
-      %th 詳細
-      %th 連絡先電話番号
+      %th 開発者
+      %th プラットフォーム
+      %th 詳細等
       %th 連絡先メール
       %th
       %th
@@ -14,8 +15,9 @@
       - @contents.each do |content|
         %tr
           %td= content.title
-          %td= unmarkdown(content.description)
-          %td= content.telephone
+          %td= content.developer_name
+          %td= content.platform
+          %td= content.description.truncate(60)
           %td= content.email
           %td= link_to 'Show', content
           %td= link_to 'Edit', edit_content_path(content)

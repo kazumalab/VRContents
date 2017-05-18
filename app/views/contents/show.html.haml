@@ -3,9 +3,10 @@
 .responsive-blog-post
   .individual-post
     %h4= @content.title
+    %p= "対応プラットフォーム : " + @content.platform
     %p.date= @content.created_at.strftime("%Y年 %m月 %d日")
     %img{:src => "#{@content.image}"}/
-    %p= ContentsHelper.markdown(@content.description).html_safe
+    %p= markdown(@content.description).html_safe
 
 = link_to 'Edit', edit_content_path(@content)
 \|
