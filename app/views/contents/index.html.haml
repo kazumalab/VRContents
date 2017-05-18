@@ -14,7 +14,7 @@
       - @contents.each do |content|
         %tr
           %td= content.title
-          %td= ContentsHelper.unmarkdown(content.description)
+          %td= unmarkdown(content.description)
           %td= content.telephone
           %td= content.email
           %td= link_to 'Show', content

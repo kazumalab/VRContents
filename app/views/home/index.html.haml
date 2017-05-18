@@ -8,30 +8,30 @@
   %meta{:content => "https://vrcontentsbydeveloper.herokuapp.com", :property => "og:url"}/
   %meta{:content => "https://vrcontentsbydeveloper.herokuapp.com", :property => "og:site_name"}/
 
+%h1= "Search for " + params[:key] if params[:key].present?
+
 %table
   %thead
     %tr
       %th タイトル
-      %th 説明
+      %th 詳細
       %th 連絡先電話番号
       %th 連絡先メール
       %th
       %th
-
   %tbody
     - if @contents.count > 0
       - @contents.each do |content|
         %tr
           %td= content.title
-          %td= ContentsHelper.unmarkdown(content.description)
+          %td= unmarkdown(content.description)
           %td= content.telephone
           %td= content.email
           %td= link_to 'Show', content
           %td= link_to 'Edit', edit_content_path(content)
     - else
       %tr
-        %td= No Contents
-
+        %td No Contents 
 %br
 
-= link_to '新規追加', new_content_path
+= link_to 'New Content', new_content_path
