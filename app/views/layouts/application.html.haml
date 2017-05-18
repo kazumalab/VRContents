@@ -24,6 +24,8 @@
               %input{:placeholder => "キーワード", :type => "search", name: "key"}/
             %li
               %button.button{:type => "submit"} Search
+    %p#notice= notice
+    %p#alert{style: "color:red;"}= alert
     = yield
 
     %script{:src => "/assets/js/jquery.js"}

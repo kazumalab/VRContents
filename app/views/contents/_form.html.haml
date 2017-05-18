@@ -1,23 +1,23 @@
-%form#new_content.new_content{"accept-charset" => "UTF-8", :action => "/contents", :enctype => "multipart/form-data", :method => "post"}
+= form_for(@content) do |f|
   %input{:name => "utf8", :type => "hidden", :value => "✓"}/
   %input{:name => "authenticity_token", :type => "hidden", :value => "#{form_authenticity_token}"}/
   .field
     %label{:for => "content_タイトル"} タイトル
-    %input#content_title{:name => "content[title]", :type => "text"}/
+    %input#content_title{:name => "content[title]", :type => "text", value: "#{@content.title}"}/
   .field
     %label{:for => "content_キャプチャ画像"} キャプチャ画像
-    %input#content_image{:name => "content[image]", :type => "file"}/
+    %input#content_image{:name => "content[image]", :type => "file", value: "#{@content.image}"}/
   .field
     %label{:for => "content_開発者名"} 開発者名
-    %input#content_developer_name{:name => "content[developer_name]", :type => "text"}/
+    %input#content_developer_name{:name => "content[developer_name]", :type => "text",value: "#{@content.developer_name}"}/
   .field
     %label{:for => "content_詳細（Markdown可）"} 詳細（markdown可）
-    %textarea{:name => "content[description]", :style => "height: 10em;"}
+    %textarea{:name => "content[description]", :style => "height: 10em;"}= @content.description
   .field
     %label{:for => "content_連絡先メールアドレス"} 連絡先メールアドレス
-    %input#content_email{:name => "content[email]", :type => "text"}/
+    %input#content_email{:name => "content[email]", :type => "text", value: "#{@content.email}"}/
   .field
     %label{:for => "content_プラットフォーム(複数の場合カンマで区切る)"} プラットフォーム(複数の場合カンマで区切る)
-    %input#content_platform{:name => "content[platform]", :type => "text"}/
+    %input#content_platform{:name => "content[platform]", :type => "text", value: "#{@content.platform}"}/
   .actions
     %input{"data-disable-with" => "Save", :name => "commit", :type => "submit", :value => "Save"}/

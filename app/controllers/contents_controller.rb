@@ -31,9 +31,10 @@ class ContentsController < ApplicationController
   # POST /contents.json
   def create
     @content = Content.new(content_params)
-
     if @content.title.blank? or @content.developer_name.blank?
-      redirect_to "/contents/new"
+      respond_to do |format|
+        format.html { redirect_to "/contents/new", alert: 'タイトルまたは開発者は必ず入れてください。' }
+      end
       return
     end
     respond_to do |format|
